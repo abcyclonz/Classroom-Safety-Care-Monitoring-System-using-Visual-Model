@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom Safety Narrator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Classroom Safety Narrator</h1>
+            <p class="subtitle">Real-time AI-powered classroom monitoring and safety analysis</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <div class="controls">
+                    <button id="startBtn" class="btn btn-primary">
+                        <span class="icon">▶</span> Start Camera
+                    </button>
+                    <button id="stopBtn" class="btn btn-secondary" disabled>
+                        <span class="icon">⏹</span> Stop Camera
+                    </button>
+                    <select id="cameraSelect" class="camera-select">
+                        <option value="0">Camera 0</option>
+                        <option value="1">Camera 1</option>
+                        <option value="2">Camera 2</option>
+                    </select>
+                </div>
+                
+                <div class="status-indicator">
+                    <span id="statusDot" class="status-dot"></span>
+                    <span id="statusText">Ready</span>
+                </div>
+            </div>
+
+            <!-- Video Display Area -->
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <img id="videoStream" src="" alt="Video Stream" style="display: none;">
+                    <div id="videoPlaceholder" class="video-placeholder">
+                        <div class="placeholder-content">
+                            <div class="placeholder-icon">📹</div>
+                            <p>Click "Start Camera" to begin monitoring</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Information Panel -->
+            <div class="info-panel">
+                <!-- Safety State Card -->
+                <div class="card state-card">
+                    <div class="card-header">
+                        <h3>Safety State</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="stateDisplay" class="state-display">
+                            <span class="state-badge" id="stateBadge">Waiting...</span>
+                        </div>
+                        <p id="stateDescription" class="state-description">No analysis yet</p>
+                    </div>
+                </div>
+
+                <!-- Narration Card -->
+                <div class="card narration-card">
+                    <div class="card-header">
+                        <h3>AI Narration</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="narrationText" class="narration-text">Waiting for analysis...</p>
+                    </div>
+                </div>
+
+                <!-- Detections Card -->
+                <div class="card detections-card">
+                    <div class="card-header">
+                        <h3>Detected Objects</h3>
+                        <span id="detectionCount" class="count-badge">0</span>
+                    </div>
+                    <div class="card-body">
+                        <div id="detectionsList" class="detections-list">
+                            <p class="empty-state">No objects detected</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History Log Card -->
+                <div class="card history-card">
+                    <div class="card-header">
+                        <h3>Activity History</h3>
+                        <span id="historyCount" class="count-badge">0</span>
+                    </div>
+                    <div class="card-body">
+                        <div id="historyList" class="history-list">
+                            <p class="empty-state">No history yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by YOLOv8, DeepFace, and Qwen3-VL</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+

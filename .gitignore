@@ -1,0 +1,5 @@
+venv/
+__pycache__/
+*.pyc
+OneDrive_1_9-18-2025/
+yolov8n.pt
